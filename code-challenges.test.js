@@ -15,6 +15,13 @@
 
 // a) Create a test with expect statements for each of the variables provided.
 
+var num1 = 15
+// Expected output: "15 is divisible by three"
+var num2 = 0
+// Expected output: "0 is divisible by three"
+var num3 = -7
+// Expected output: "-7 is not divisible by three"
+
 // First I'll write a test, starting with the describe() method.
 // The describe method lists the name of the function or the name of the test. Here I'm giving it the function name I want to use.
 describe("divisibleOrNot", () => {
@@ -23,35 +30,29 @@ describe("divisibleOrNot", () => {
     // Next I'm using the test() method that describes what the function will do.
     test("takes a number as an argument and decides if the number is evenly divisible by three", () => {
         
-      // Last, I'll use the expect() method that will call on the isEvenlyDivisble() function.
-      // I'll also add the .toEqual() matcher that will check the expected output of the function return. 
-      expect(divisibleOrNot(0)).toEqual("is divisible")
-      expect(divisibleOrNot()).toEqual("not divisible")
+      // Last, I'll use 3 expect() methods that will call on the divisibleOrNot() function, and will also add the .toEqual() matcher that will check the expected output of the function return. 
+      expect(divisibleOrNot(num1)).toEqual("15 is divisible by three")
+      expect(divisibleOrNot(num2)).toEqual("0 is divisible by three")
+      expect(divisibleOrNot(num3)).toEqual("-7 is not divisible by three")
     })
   })
 
 
-// I'm running 'yarn jest' to make sure the test fails on its first iteration. Spoiler alert: It fails. And throws the error 'divisibleOrNot is not defined'. That means there are no other functions named divisibleOrNot within the code base, so I'm free to use that name for my function.
-
-var num1 = 15
-// Expected output: "15 is divisible by three"
-var num2 = 0
-// Expected output: "0 is divisible by three"
-var num3 = -7
-// Expected output: "-7 is not divisible by three"
+// Running 'yarn jest' to make sure the test fails on its first iteration. I've observed that it successfully fails, and throws the error 'divisibleOrNot is not defined'. That means there are no other functions named divisibleOrNot within the code base, so I'm free to use that name for my function.
 
 // b) Create the function that makes the test pass.
-// Now that my test is created, I'm going to write the function that will take one argument.
+
+// Now that my test is created, I'll write the function so that it takes one argument.
 // !important - The function should be generic and dynamic.
 
 // creating the function that takes 1 argument. The argument should be a unique name, not the same as one of the variables declared above.
-// const divisibleOrNot = (num) => {
-//     if(num % 3 === 0){
-//         return "is divisible"
-//     } else if(num % 3 !== 0) {
-//         return "not divisible"
-//     }
-// }
+const divisibleOrNot = (num) => {
+    if(num % 3 === 0){
+        return `${num} is divisible by three`
+    } else if(num % 3 !== 0) {
+        return `${num} is not divisible by three`
+    }
+}
 
 
 
